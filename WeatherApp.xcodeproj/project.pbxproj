@@ -22,6 +22,7 @@
 		C92C57E02CA450EC00D1C772 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92C57DF2CA450EC00D1C772 /* WeatherViewModel.swift */; };
 		C92C57E32CA4548E00D1C772 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92C57E22CA4548E00D1C772 /* UIApplication+.swift */; };
 		C92C57E62CA48AD300D1C772 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C92C57E52CA48AD300D1C772 /* Kingfisher */; };
+		C92C57E92CA4A1F300D1C772 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92C57E82CA4A1F300D1C772 /* Environment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		C92C57DD2CA3C7A900D1C772 /* GeocodingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodingService.swift; sourceTree = "<group>"; };
 		C92C57DF2CA450EC00D1C772 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		C92C57E22CA4548E00D1C772 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
+		C92C57E82CA4A1F300D1C772 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		C92C57B92CA3292400D1C772 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				C92C57E72CA4A1DD00D1C772 /* Configs */,
 				C92C57E12CA4547300D1C772 /* Extenstions */,
 				C92C57D72CA3392300D1C772 /* Constants */,
 				C92C57D12CA3327000D1C772 /* Services */,
@@ -139,6 +142,14 @@
 				C92C57E22CA4548E00D1C772 /* UIApplication+.swift */,
 			);
 			path = Extenstions;
+			sourceTree = "<group>";
+		};
+		C92C57E72CA4A1DD00D1C772 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				C92C57E82CA4A1F300D1C772 /* Environment.swift */,
+			);
+			path = Configs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C92C57D02CA3295800D1C772 /* Weather.swift in Sources */,
+				C92C57E92CA4A1F300D1C772 /* Environment.swift in Sources */,
 				C92C57BF2CA3292400D1C772 /* ViewController.swift in Sources */,
 				C92C57BB2CA3292400D1C772 /* AppDelegate.swift in Sources */,
 				C92C57D42CA332A900D1C772 /* APIRequest.swift in Sources */,

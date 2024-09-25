@@ -49,7 +49,7 @@ class WeatherViewModelImpl: WeatherViewModel {
         let queryItems = [
             URLQueryItem(name: "lat", value: String(lat)),
             URLQueryItem(name: "lon", value: String(lon)),
-            URLQueryItem(name: "appid", value: Constants.weatherAPIKe.rawValue)
+            URLQueryItem(name: "appid", value: Environment.apiKey)
         ]
         return queryItems
     }
@@ -100,6 +100,7 @@ class WeatherViewModelImpl: WeatherViewModel {
         words.compactMap{ Int($0) }
         numbers.map { $0 * 2}
         optionalNumbers.map{$0.map {$0 * 2}}
+        optionalNumbers.flatMap({ $0 })
         
     }
     
