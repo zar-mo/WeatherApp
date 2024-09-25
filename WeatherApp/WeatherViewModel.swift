@@ -96,7 +96,7 @@ class WeatherViewModelImpl: WeatherViewModel {
 //        let numbers: [Int] = [1, 2, 4, 5, 6, 7]
 //        let items: [Int?] = [1, 3, 4, nil, 7, 9]
 //        let words = ["123", "john", "345"]
-//        let optionalNumbers = words.map{Int($0)}
+//        let optiInfo.plistonalNumbers = words.map{Int($0)}
 //        words.compactMap{ Int($0) }
 //        numbers.map { $0 * 2}
 //        optionalNumbers.map{$0.map {$0 * 2}}
