@@ -19,6 +19,9 @@
 		C92C57D92CA3393600D1C772 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92C57D82CA3393600D1C772 /* Constants.swift */; };
 		C92C57DC2CA3B84D00D1C772 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92C57DB2CA3B84D00D1C772 /* LocationManager.swift */; };
 		C92C57DE2CA3C7A900D1C772 /* GeocodingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92C57DD2CA3C7A900D1C772 /* GeocodingService.swift */; };
+		C92C57E02CA450EC00D1C772 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92C57DF2CA450EC00D1C772 /* WeatherViewModel.swift */; };
+		C92C57E32CA4548E00D1C772 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92C57E22CA4548E00D1C772 /* UIApplication+.swift */; };
+		C92C57E62CA48AD300D1C772 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C92C57E52CA48AD300D1C772 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,8 @@
 		C92C57D82CA3393600D1C772 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C92C57DB2CA3B84D00D1C772 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		C92C57DD2CA3C7A900D1C772 /* GeocodingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodingService.swift; sourceTree = "<group>"; };
+		C92C57DF2CA450EC00D1C772 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		C92C57E22CA4548E00D1C772 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C92C57E62CA48AD300D1C772 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,11 +74,13 @@
 		C92C57B92CA3292400D1C772 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				C92C57E12CA4547300D1C772 /* Extenstions */,
 				C92C57D72CA3392300D1C772 /* Constants */,
 				C92C57D12CA3327000D1C772 /* Services */,
 				C92C57BA2CA3292400D1C772 /* AppDelegate.swift */,
 				C92C57BC2CA3292400D1C772 /* SceneDelegate.swift */,
 				C92C57BE2CA3292400D1C772 /* ViewController.swift */,
+				C92C57DF2CA450EC00D1C772 /* WeatherViewModel.swift */,
 				C92C57CE2CA3293F00D1C772 /* DataModels */,
 				C92C57C02CA3292400D1C772 /* Main.storyboard */,
 				C92C57C32CA3292500D1C772 /* Assets.xcassets */,
@@ -125,6 +133,14 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		C92C57E12CA4547300D1C772 /* Extenstions */ = {
+			isa = PBXGroup;
+			children = (
+				C92C57E22CA4548E00D1C772 /* UIApplication+.swift */,
+			);
+			path = Extenstions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,6 +157,9 @@
 			dependencies = (
 			);
 			name = WeatherApp;
+			packageProductDependencies = (
+				C92C57E52CA48AD300D1C772 /* Kingfisher */,
+			);
 			productName = WeatherApp;
 			productReference = C92C57B72CA3292400D1C772 /* WeatherApp.app */;
 			productType = "com.apple.product-type.application";
@@ -169,6 +188,9 @@
 				Base,
 			);
 			mainGroup = C92C57AE2CA3292400D1C772;
+			packageReferences = (
+				C92C57E42CA48AD300D1C772 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = C92C57B82CA3292400D1C772 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -201,8 +223,10 @@
 				C92C57BB2CA3292400D1C772 /* AppDelegate.swift in Sources */,
 				C92C57D42CA332A900D1C772 /* APIRequest.swift in Sources */,
 				C92C57DC2CA3B84D00D1C772 /* LocationManager.swift in Sources */,
+				C92C57E02CA450EC00D1C772 /* WeatherViewModel.swift in Sources */,
 				C92C57DE2CA3C7A900D1C772 /* GeocodingService.swift in Sources */,
 				C92C57D92CA3393600D1C772 /* Constants.swift in Sources */,
+				C92C57E32CA4548E00D1C772 /* UIApplication+.swift in Sources */,
 				C92C57BD2CA3292400D1C772 /* SceneDelegate.swift in Sources */,
 				C92C57D62CA332BB00D1C772 /* APIClient.swift in Sources */,
 			);
@@ -431,6 +455,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C92C57E42CA48AD300D1C772 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C92C57E52CA48AD300D1C772 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C92C57E42CA48AD300D1C772 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C92C57AF2CA3292400D1C772 /* Project object */;
 }

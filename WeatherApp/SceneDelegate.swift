@@ -15,6 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
+        let rootVC = window?.rootViewController as? ViewController
+        rootVC?.viewModel = WeatherViewModelImpl(geoCodingService: GeocodingServiceImpl(), apiClient: APIClient())
         
         locationManager = LocationManagerImpl()
         locationManager?.getCurrentLocation()

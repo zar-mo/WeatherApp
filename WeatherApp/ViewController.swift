@@ -7,60 +7,95 @@
 
 import UIKit
 import Combine
+import MapKit
+import Kingfisher
 
 class ViewController: UIViewController {
-
-    var cancellables = Set<AnyCancellable>()
     
+    var locationManager : LocationManager?
+    var cancellables = Set<AnyCancellable>()
+    var viewModel: WeatherViewModel!
+    
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var cityNameTF: UITextField!
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tempratureLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.locationManager = UIApplication.shared.sceneDelegate?.locationManager
+        subscripeToLocation()
+        subscripeToWeather()
         
-        apiCall()
-        print("View Did Load")
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let sceneDelegate = scene.delegate as? SceneDelegate{
-            let locationManager = sceneDelegate.locationManager
-            
-            locationManager?.currentLocation.sink(receiveValue: { location in
-                print("location updated \(location)")
-                
-                
-            }).store(in: &cancellables)
-            
-            
-        }
-      
     }
-   
     
-    func apiCall(){
+    @IBAction func selectCityButton(_ sender: UIButton) {
         
-        var components = URLComponents()
-
-        // Query Items: lat, lon, appid
-        let queryItems = [
-            URLQueryItem(name: "lat", value: "44.34"),
-            URLQueryItem(name: "lon", value: "10.99"),
-            URLQueryItem(name: "appid", value: "9e7b3accfbb06e554c8c588391ff845e")
-        ]
-        
-        let urlRequest = WeatherAPIRequest()
-        urlRequest.queryItems = queryItems
-        let apiClinet = APIClient()
-        Task{
-            do{
-                try await apiClinet.fetchData(urlRequest)
-            }catch {
-                print("failed to fetch data")
+        if let name = cityNameTF.text, !name.isEmpty{
+            
+            Task{
+                do{
+                    try await viewModel.getLocationFromCityName(name: name)
+                }
             }
         }
         
-        
     }
+    
+    
+}
 
+// MARK: - methods
 
+extension ViewController{
+    
+    
+    func subscripeToLocation(){
+        
+        locationManager?.currentLocation.sink(receiveValue: { location in
+            
+            DispatchQueue.main.async{
+                self.mapSetup()
+            }
+            
+        }).store(in: &cancellables)
+    }
+    
+    func subscripeToWeather(){
+        
+        viewModel.weatherData.sink(receiveValue: {  weather in
+            
+            DispatchQueue.main.async{
+                self.cityNameLabel.text = weather?.name
+                
+                if let kelvinTemp = weather?.main.temp {
+                    let fahrenheitTemp = (kelvinTemp - 273.15) * 9/5 + 32
+                    self.tempratureLabel.text = String(format: "%.1f°F", fahrenheitTemp)
+                }
+                if let iconCode = weather?.weather.first?.icon{
+                    let imageUrl = "https://openweathermap.org/img/wn/\(iconCode)@2x.png"
+                    self.iconImageView.kf.setImage(with: URL(string: imageUrl))
+                }
+                
+            }
+            
+        }).store(in: &cancellables)
+    }
+    
+    func mapSetup(){
+        
+        let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+        if let location = viewModel.locationManager?.currentLocation.value?.coordinate{
+           let region = MKCoordinateRegion(center: location, span: span)
+            mapView.setRegion(region, animated: true)
+            
+            let pin = MKPointAnnotation()
+            pin.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+            mapView.addAnnotation(pin)
+        
+            
+        }
+    }
 }
 
